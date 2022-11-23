@@ -6,7 +6,7 @@ const items = galleryItems
   .map((item) => {
     return `
     <div class"gallery__item>
-        <a class"gallery__link" href="#">
+        <a class"gallery__link" href="${item.original}">
             <img class="gallery__image"
             data-source="${item.original}"
             src="${item.preview}"
@@ -26,4 +26,10 @@ gallery.addEventListener("click", (e) => {
     <img src="${e.target.dataset.source}" width="800" height="600">
 `);
   instance.show();
+
+  gallery.addEventListener("keydown", (e) => {
+    if (e.code === "Escape") {
+      instance.close();
+    }
+  });
 });
